@@ -1,8 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axiosApiInstance from './utils/axiosInstance';
 
 function App() {
+  axiosApiInstance
+    .get('https://pokeapi.co/api/v2/pokemon/ditto')
+    .then((data) => {
+      console.log(data);
+    });
   return (
     <div className="App">
       <header className="App-header">
