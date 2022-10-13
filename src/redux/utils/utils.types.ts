@@ -38,7 +38,7 @@ interface IInitState {
   type: UtilsActionTypes.INIT_STATE;
 }
 
-export type TAction =
+export type TUtilsAction =
   | ISetPopUpBool
   | ISetDomainName
   | IAddAlert

@@ -1,8 +1,10 @@
 import React from 'react';
-// import { Alert } from 'reactstrap';
-// import { useSelector, useDispatch } from 'react-redux';
+import { Alert } from 'reactstrap';
+import { useSelector, useDispatch } from 'react-redux';
 
-// import { closeAlert, deleteAlert } from '../../redux/utils/utils.actions';
+import { closeAlert, deleteAlert } from '../../redux/utils/utils.actions';
+
+import { TState } from '../../redux/root-reducer';
 
 import './alerts.styles.scss';
 
@@ -14,27 +16,30 @@ export interface IAlert {
 }
 
 const Alerts = () => {
-  // const dispatch = useDispatch();
-  // const alerts = useSelector(state => state.utils.alerts);
+  const dispatch = useDispatch();
+  const alerts = useSelector((state: TState) => state.utils.alerts);
 
-  // const closeAlertAnimated = (id) => {
-  //   dispatch(closeAlert(id));
-  //   setTimeout(() => {
-  //     dispatch(deleteAlert(id));
-  //   }, 500)
-  // };
+  const closeAlertAnimated = (id: string) => {
+    dispatch(closeAlert(id));
+    setTimeout(() => {
+      dispatch(deleteAlert(id));
+    }, 500);
+  };
 
   return (
     <div className="alerts">
-      <p>Alert</p>
-      {/* {
-        alerts && alerts.map(alert => (
-        <Alert color={alert.type} key={alert.id} isOpen={alert.open} toggle={() => closeAlertAnimated(alert.id)}>
-          <p>{alert.message}</p>
-          <p>{alert.id}</p>
-        </Alert>
-        ))
-      } */}
+      {alerts &&
+        alerts.map((alert) => (
+          <Alert
+            color={alert.type}
+            key={alert.id}
+            isOpen={alert.open}
+            toggle={() => closeAlertAnimated(alert.id)}
+          >
+            <p>{alert.message}</p>
+            <p>{alert.id}</p>
+          </Alert>
+        ))}
     </div>
   );
 };

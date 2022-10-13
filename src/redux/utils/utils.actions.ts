@@ -1,7 +1,7 @@
 import { UtilsActionTypes } from './utils.types';
 
 import { IAlert } from '../../components/alerts/alerts.component';
-import { IState } from './utils.reducer';
+import { IUtilsState } from './utils.reducer';
 
 export const setPopUpBool = (popup: boolean) => ({
   type: UtilsActionTypes.SET_POP_UP_BOOL,
@@ -28,7 +28,7 @@ export const deleteAlert = (id: string) => ({
   payload: id,
 });
 
-export const initState = (state: IState) => ({
+export const initState = (state: IUtilsState) => ({
   type: UtilsActionTypes.INIT_STATE,
   payload: state,
 });

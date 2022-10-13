@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/default-param-last */
 
-import { UtilsActionTypes, TAction } from './utils.types';
+import { UtilsActionTypes, TUtilsAction } from './utils.types';
 import { IAlert } from '../../components/alerts/alerts.component';
 
 const INITIAL_STATE = {
@@ -10,14 +10,17 @@ const INITIAL_STATE = {
   alerts: [],
 };
 
-export interface IState {
+export interface IUtilsState {
   popUpBool: boolean;
   pointOfSale: number;
   domainName: string;
   alerts: IAlert[];
 }
 
-const utilsReducer = (state: IState = INITIAL_STATE, action: TAction) => {
+const utilsReducer = (
+  state: IUtilsState = INITIAL_STATE,
+  action: TUtilsAction,
+) => {
   switch (action.type) {
     case UtilsActionTypes.SET_POP_UP_BOOL:
       return {
