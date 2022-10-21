@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import axiosApiInstance from '../../utils/axiosInstance';
+
 import CustomButton from '../../components/custom-button/custom-button.component';
 import FormInput from '../../components/form-input/form-input.component';
 
@@ -18,7 +20,17 @@ const SignInPage = () => {
 
     setLoading(true);
 
-    setTimeout(() => setLoading(false), 5000);
+    const payload = {
+      email: username,
+      password,
+    };
+
+    axiosApiInstance
+      .post(`${process.env.REACT_APP_BACKEND_URL}/auth/users/login/`, payload)
+      .then((data) => {
+        setLoading(false);
+        console.log(data);
+      });
   };
 
   return (
